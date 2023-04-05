@@ -59,7 +59,7 @@
             }
 
             let output = document.getElementById('tagOutput');
-            output.value = imgTags[0].src;
+            output.value = filterTag(imgTags[0].src);
 
             let image = new Image();
             image.src = output.value;
@@ -78,6 +78,10 @@
                     }
                 }).catch(() => showToast('Invalid Impression Tracker'));
             };
+        }
+
+        function filterTag(tag) {
+            return tag.replace(/\$%7B(.*?)%7D/g, "${$1}");
         }
 
         function copyTextToClipboard() {
